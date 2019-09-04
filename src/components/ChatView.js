@@ -82,11 +82,14 @@ export default class ConsumeChatView extends React.Component {
         }).reverse();
         return <Fragment>
             <div className='row'>
-                <ul className='overflow-auto' css={{[mq[0]]:{height:'100px'}, [mq[2]]:{height:'300px'}, width:'100%'}}>
-                    {children}
-                </ul>
+                <div className='col'>
+                    <h4>chat log</h4>
+                    <ul className='overflow-auto' css={{[mq[0]]:{height:'100px'}, [mq[2]]:{height:'260px'}, width:'100%'}}>
+                        {children}
+                    </ul>
+                </div>
             </div>
-            <div className='row'>
+            <div className='row' css={{[mq[0]]:{display:'block'}, [mq[2]]:{display:'none'}}}>
                 <div className='col-12 col-md-9'>
                     <input type='text' ref={this.textRef} placeholder='message' className='form-control' />
                 </div>

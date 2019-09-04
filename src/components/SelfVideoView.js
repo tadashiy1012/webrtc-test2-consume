@@ -40,7 +40,7 @@ export default class SelfVideoView extends React.Component {
             <video ref={this.selfVideoRef} 
                 autoPlay muted webkit-playsinline='true' playsInline 
                 css={{[mq[0]]: {width:'82px', height:'62px', position:'absolute', right:'11%', top:'4px'},
-                     [mq[2]]: {width:'77%', height:'44%', position:'static', display:'block', margin:'0px auto'}, backgroundColor:'black'}} />
+                     [mq[2]]: {width:'77%', height:'auto', position:'static', display:'block', margin:'0px auto'}, backgroundColor:'black'}} />
             <div css={{[mq[0]]: {display:'none'}, [mq[2]]: {display:'grid'}, gridTemplateColumns:'repeat(100px)', justifyContent:'center'}}>
                 <label>
                     <input type='checkbox' name='micMode' checked={this.props.consume.micMode} onChange={() => {

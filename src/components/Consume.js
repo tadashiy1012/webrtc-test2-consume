@@ -6,6 +6,7 @@ import {makeConsumeDataChPC, makeConsumePC} from '../util';
 import ChatView from './ChatView';
 import SelfVideoView from './SelfVideoView';
 import RemoteVideoView from './RemoteVideoView';
+import MessageSender from './MessageSender';
 
 @inject('root', 'consume')
 @observer
@@ -74,17 +75,16 @@ export default class Consume extends React.Component {
             bp => `@media (min-width: ${bp}px)`
         );
         return <Fragment>
-            <div css={{marginTop:'12px'}}>
-                <div className='row no-gutters'>
-                    <div className='col-md-9'>
-                        <RemoteVideoView />
-                    </div>
-                    <div className='col-md-3' css={{[mq[0]]: {position:'absolute'}, [mq[2]]: {position:'static'}}}>
-                        <SelfVideoView />
-                    </div>
+            <div className='row no-gutters'>
+                <div className='col-md-9'>
+                    <RemoteVideoView />
                 </div>
-                <ChatView />
+                <div className='col-md-3' css={{[mq[0]]: {position:'absolute'}, [mq[2]]: {position:'static'}}}>
+                    <SelfVideoView />
+                    <MessageSender />
+                </div>
             </div>
+            <ChatView />
         </Fragment>
     }
 }
