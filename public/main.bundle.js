@@ -74349,8 +74349,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PeerConnState", function() { return PeerConnState; });
 /* harmony import */ var core_js_modules_es_array_buffer_slice__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array-buffer.slice */ "./node_modules/core-js/modules/es.array-buffer.slice.js");
 /* harmony import */ var core_js_modules_es_array_buffer_slice__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_buffer_slice__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var core_js_modules_es_typed_array_uint16_array__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.typed-array.uint16-array */ "./node_modules/core-js/modules/es.typed-array.uint16-array.js");
-/* harmony import */ var core_js_modules_es_typed_array_uint16_array__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_typed_array_uint16_array__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var core_js_modules_es_typed_array_uint8_array__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.typed-array.uint8-array */ "./node_modules/core-js/modules/es.typed-array.uint8-array.js");
+/* harmony import */ var core_js_modules_es_typed_array_uint8_array__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_typed_array_uint8_array__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var core_js_modules_web_dom_collections_iterator__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/web.dom-collections.iterator */ "./node_modules/core-js/modules/web.dom-collections.iterator.js");
 /* harmony import */ var core_js_modules_web_dom_collections_iterator__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_iterator__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
@@ -74447,11 +74447,21 @@ const PeerConnState = Base => {
             this.addSay(json.id, json.message);
           } else if (json.type === 'b64') {
             const buf = Object(base64_arraybuffer_es6__WEBPACK_IMPORTED_MODULE_4__["decode"])(json.message);
-            console.log(buf);
+            const tary = new Uint8Array(buf);
+            const header = tary.slice(0, 100);
+            const id = header.slice(0, 36);
+            const type = header.slice(36);
+            const file = tary.slice(100);
+            const typeStr = Object(_util__WEBPACK_IMPORTED_MODULE_5__["tArray2String"])(type.slice(0, type.indexOf(0)));
+            const blob = new Blob([file], {
+              type: typeStr
+            });
+            console.log(blob);
+            this.addObj(Object(_util__WEBPACK_IMPORTED_MODULE_5__["tArray2String"])(id), blob);
           }
         } else {
           if (ev.data instanceof ArrayBuffer) {
-            const tary = new Uint16Array(ev.data);
+            const tary = new Uint8Array(ev.data);
             const header = tary.slice(0, 100);
             const id = header.slice(0, 36);
             const type = header.slice(36);

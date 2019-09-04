@@ -72,11 +72,19 @@ const PeerConnState = Base => class extends Base {
                     this.addSay(json.id, json.message);
                 } else if (json.type === 'b64') {
                     const buf = decode(json.message);
-                    console.log(buf);
+                    const tary = new Uint8Array(buf);
+                    const header = tary.slice(0, 100);
+                    const id = header.slice(0, 36);
+                    const type = header.slice(36);
+                    const file = tary.slice(100);
+                    const typeStr = tArray2String(type.slice(0, type.indexOf(0)));
+                    const blob = new Blob([file], {type: typeStr});
+                    console.log(blob);
+                    this.addObj(tArray2String(id), blob);
                 }
             } else {
                 if (ev.data instanceof ArrayBuffer) {
-                    const tary = new Uint16Array(ev.data);
+                    const tary = new Uint8Array(ev.data);
                     const header = tary.slice(0, 100);
                     const id = header.slice(0, 36);
                     const type = header.slice(36);
