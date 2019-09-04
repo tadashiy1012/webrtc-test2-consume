@@ -73758,19 +73758,29 @@ let ConsumeChatView = (_dec2 = Object(mobx_react__WEBPACK_IMPORTED_MODULE_2__["i
     }).reverse();
     return Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__["jsx"])(react__WEBPACK_IMPORTED_MODULE_1__["Fragment"], null, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__["jsx"])("div", {
       className: "row"
-    }, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__["jsx"])("ul", {
+    }, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__["jsx"])("div", {
+      className: "col"
+    }, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__["jsx"])("h4", null, "chat log"), Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__["jsx"])("ul", {
       className: "overflow-auto",
       css: {
         [mq[0]]: {
           height: '100px'
         },
         [mq[2]]: {
-          height: '300px'
+          height: '260px'
         },
         width: '100%'
       }
-    }, children)), Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__["jsx"])("div", {
-      className: "row"
+    }, children))), Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__["jsx"])("div", {
+      className: "row",
+      css: {
+        [mq[0]]: {
+          display: 'block'
+        },
+        [mq[2]]: {
+          display: 'none'
+        }
+      }
     }, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__["jsx"])("div", {
       className: "col-12 col-md-9"
     }, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__["jsx"])("input", {
@@ -73813,11 +73823,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ChatView__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ChatView */ "./src/components/ChatView.js");
 /* harmony import */ var _SelfVideoView__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./SelfVideoView */ "./src/components/SelfVideoView.js");
 /* harmony import */ var _RemoteVideoView__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./RemoteVideoView */ "./src/components/RemoteVideoView.js");
+/* harmony import */ var _MessageSender__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./MessageSender */ "./src/components/MessageSender.js");
 
 
 var _dec, _class;
 
 /** @jsx jsx */
+
 
 
 
@@ -73880,10 +73892,6 @@ let Consume = (_dec = Object(mobx_react__WEBPACK_IMPORTED_MODULE_2__["inject"])(
   render() {
     const mq = [360, 576, 800].map(bp => "@media (min-width: ".concat(bp, "px)"));
     return Object(_emotion_core__WEBPACK_IMPORTED_MODULE_1__["jsx"])(react__WEBPACK_IMPORTED_MODULE_3__["Fragment"], null, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_1__["jsx"])("div", {
-      css: {
-        marginTop: '12px'
-      }
-    }, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_1__["jsx"])("div", {
       className: "row no-gutters"
     }, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_1__["jsx"])("div", {
       className: "col-md-9"
@@ -73897,7 +73905,75 @@ let Consume = (_dec = Object(mobx_react__WEBPACK_IMPORTED_MODULE_2__["inject"])(
           position: 'static'
         }
       }
-    }, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_1__["jsx"])(_SelfVideoView__WEBPACK_IMPORTED_MODULE_6__["default"], null))), Object(_emotion_core__WEBPACK_IMPORTED_MODULE_1__["jsx"])(_ChatView__WEBPACK_IMPORTED_MODULE_5__["default"], null)));
+    }, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_1__["jsx"])(_SelfVideoView__WEBPACK_IMPORTED_MODULE_6__["default"], null), Object(_emotion_core__WEBPACK_IMPORTED_MODULE_1__["jsx"])(_MessageSender__WEBPACK_IMPORTED_MODULE_8__["default"], null))), Object(_emotion_core__WEBPACK_IMPORTED_MODULE_1__["jsx"])(_ChatView__WEBPACK_IMPORTED_MODULE_5__["default"], null));
+  }
+
+}) || _class) || _class);
+
+
+/***/ }),
+
+/***/ "./src/components/MessageSender.js":
+/*!*****************************************!*\
+  !*** ./src/components/MessageSender.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return MessageSender; });
+/* harmony import */ var _emotion_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @emotion/core */ "./node_modules/@emotion/core/dist/core.browser.esm.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/dist/mobx-react.module.js");
+var _dec, _class;
+
+/** @jsx jsx */
+
+
+
+let MessageSender = (_dec = Object(mobx_react__WEBPACK_IMPORTED_MODULE_2__["inject"])('consume'), _dec(_class = Object(mobx_react__WEBPACK_IMPORTED_MODULE_2__["observer"])(_class = class MessageSender extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
+  constructor(props) {
+    super(props);
+    this.textRef = react__WEBPACK_IMPORTED_MODULE_1___default.a.createRef();
+  }
+
+  handleSendClick() {
+    this.props.consume.addSay('[me]', this.textRef.current.value);
+    this.props.consume.dcPc.send(this.textRef.current.value);
+  }
+
+  render() {
+    const mq = [360, 576, 800].map(bp => "@media (min-width: ".concat(bp, "px)"));
+    return Object(_emotion_core__WEBPACK_IMPORTED_MODULE_0__["jsx"])(react__WEBPACK_IMPORTED_MODULE_1__["Fragment"], null, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_0__["jsx"])("div", {
+      className: "row",
+      css: {
+        [mq[0]]: {
+          display: 'none'
+        },
+        [mq[2]]: {
+          display: 'block'
+        }
+      }
+    }, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_0__["jsx"])("div", {
+      className: "col-12"
+    }, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_0__["jsx"])("textarea", {
+      ref: this.textRef,
+      rows: "3",
+      placeholder: "message",
+      className: "form-control"
+    })), Object(_emotion_core__WEBPACK_IMPORTED_MODULE_0__["jsx"])("div", {
+      className: "col-12",
+      css: {
+        marginTop: '4px'
+      }
+    }, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_0__["jsx"])("button", {
+      onClick: () => {
+        this.handleSendClick();
+      },
+      className: "btn btn-primary btn-block"
+    }, "send message"))));
   }
 
 }) || _class) || _class);
@@ -73969,7 +74045,8 @@ let RemoteVideoView = (_dec = Object(mobx_react__WEBPACK_IMPORTED_MODULE_2__["in
       className: "mx-auto d-block",
       css: {
         width: '96%',
-        minHeight: '220px',
+        minHeight: '200px',
+        maxHeight: '600px',
         backgroundColor: 'black'
       }
     }), Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__["jsx"])("div", {
@@ -74101,7 +74178,7 @@ let SelfVideoView = (_dec = Object(mobx_react__WEBPACK_IMPORTED_MODULE_1__["inje
         },
         [mq[2]]: {
           width: '77%',
-          height: '44%',
+          height: 'auto',
           position: 'static',
           display: 'block',
           margin: '0px auto'
