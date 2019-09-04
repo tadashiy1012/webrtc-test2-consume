@@ -74794,6 +74794,8 @@ const ModeState = Base => {
         this.evn = 'edge';
       } else if (userAgent.indexOf('chrome') !== -1) {
         this.env = 'chrome';
+      } else if (userAgent.indexOf('iphone') !== -1) {
+        this.env = 'iphone';
       } else if (userAgent.indexOf('safari') !== -1) {
         this.env = 'safari';
       } else if (userAgent.indexOf('firefox') !== -1) {
