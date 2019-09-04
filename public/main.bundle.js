@@ -73628,122 +73628,10 @@ module.exports = function(module) {
 
 /***/ }),
 
-/***/ "./src/components/Consume.js":
-/*!***********************************!*\
-  !*** ./src/components/Consume.js ***!
-  \***********************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Consume; });
-/* harmony import */ var core_js_modules_web_dom_collections_iterator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/web.dom-collections.iterator */ "./node_modules/core-js/modules/web.dom-collections.iterator.js");
-/* harmony import */ var core_js_modules_web_dom_collections_iterator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_iterator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _emotion_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @emotion/core */ "./node_modules/@emotion/core/dist/core.browser.esm.js");
-/* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/dist/mobx-react.module.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../util */ "./src/util/index.js");
-/* harmony import */ var _ConsumeChatView__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ConsumeChatView */ "./src/components/ConsumeChatView.js");
-/* harmony import */ var _SelfVideoView__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./SelfVideoView */ "./src/components/SelfVideoView.js");
-/* harmony import */ var _RemoteVideoView__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./RemoteVideoView */ "./src/components/RemoteVideoView.js");
-
-
-var _dec, _class;
-
-/** @jsx jsx */
-
-
-
-
-
-
-
-let Consume = (_dec = Object(mobx_react__WEBPACK_IMPORTED_MODULE_2__["inject"])('root', 'consume'), _dec(_class = Object(mobx_react__WEBPACK_IMPORTED_MODULE_2__["observer"])(_class = class Consume extends react__WEBPACK_IMPORTED_MODULE_3___default.a.Component {
-  constructor(props) {
-    super(props);
-    this.props.root.setMode('consume');
-    const params = new URL(document.location).searchParams;
-    const key = params.get('key') || 'default';
-    this.props.consume.setKey(key);
-    this.props.consume.createWebSocket();
-    this.props.consume.setWsOnMessageHandler(ev => {
-      console.log(ev);
-      const json = JSON.parse(ev.data);
-      console.log(json);
-
-      if (json.type === 'produce') {
-        if (this.props.consume.pc !== null && this.props.consume.id === json.destination) {
-          console.log('message to me (pc)');
-          this.props.consume.setRecievedAnswer(json.sdp);
-        }
-      } else if (json.type === 'produce_dc') {
-        if (this.props.consume.dcPc !== null && this.props.consume.id === json.destination) {
-          console.log('message to me (dcPc)');
-          this.props.consume.setDcRecievedAnswer(json.sdp, this.props.consume.key, this.props.root.env);
-        }
-      }
-    });
-    this.props.consume.setPC(Object(_util__WEBPACK_IMPORTED_MODULE_4__["makeConsumePC"])(this.props.consume.id, this.props.consume.ws, this.props.consume.key));
-    this.props.consume.setPcOnTrackHandler(ev => {
-      console.log(ev);
-      console.log(ev.streams[0].getTracks());
-      this.props.consume.setRecorder(ev.streams[0]);
-      this.props.consume.target.srcObject = ev.streams[0];
-    });
-    this.props.consume.setDcPC(Object(_util__WEBPACK_IMPORTED_MODULE_4__["makeConsumeDataChPC"])(this.props.consume.id, this.props.consume.ws, this.props.consume.key, this.props.root.env));
-    this.props.consume.dcPc.createDataCh();
-    this.props.consume.setDcOnMessage();
-  }
-
-  componentWillUnmount() {
-    console.log('consume component unmount');
-    this.props.consume.setWsOnMessageHandler(() => {});
-    this.props.consume.unsetWebSocket();
-    this.props.consume.setPC(null);
-    this.props.consume.setDcPC(null);
-    this.props.consume.setTarget(null);
-    this.props.consume.setStream(null);
-    this.props.consume.setStreamSelf(null);
-    this.props.consume.unsetRecorder();
-    this.props.consume.clearSays();
-    this.props.consume.clearObjects();
-    this.props.consume.regenerateId();
-  }
-
-  render() {
-    const mq = [360, 576, 800].map(bp => "@media (min-width: ".concat(bp, "px)"));
-    return Object(_emotion_core__WEBPACK_IMPORTED_MODULE_1__["jsx"])(react__WEBPACK_IMPORTED_MODULE_3__["Fragment"], null, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_1__["jsx"])("div", {
-      css: {
-        marginTop: '12px'
-      }
-    }, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_1__["jsx"])("div", {
-      className: "row no-gutters"
-    }, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_1__["jsx"])("div", {
-      className: "col-md-9"
-    }, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_1__["jsx"])(_RemoteVideoView__WEBPACK_IMPORTED_MODULE_7__["default"], null)), Object(_emotion_core__WEBPACK_IMPORTED_MODULE_1__["jsx"])("div", {
-      className: "col-md-3",
-      css: {
-        [mq[0]]: {
-          position: 'absolute'
-        },
-        [mq[2]]: {
-          position: 'static'
-        }
-      }
-    }, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_1__["jsx"])(_SelfVideoView__WEBPACK_IMPORTED_MODULE_6__["default"], null))), Object(_emotion_core__WEBPACK_IMPORTED_MODULE_1__["jsx"])(_ConsumeChatView__WEBPACK_IMPORTED_MODULE_5__["default"], null)));
-  }
-
-}) || _class) || _class);
-
-
-/***/ }),
-
-/***/ "./src/components/ConsumeChatView.js":
-/*!*******************************************!*\
-  !*** ./src/components/ConsumeChatView.js ***!
-  \*******************************************/
+/***/ "./src/components/ChatView.js":
+/*!************************************!*\
+  !*** ./src/components/ChatView.js ***!
+  \************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -73901,6 +73789,118 @@ let ConsumeChatView = (_dec2 = Object(mobx_react__WEBPACK_IMPORTED_MODULE_2__["i
   }
 
 }) || _class2) || _class2);
+
+
+/***/ }),
+
+/***/ "./src/components/Consume.js":
+/*!***********************************!*\
+  !*** ./src/components/Consume.js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Consume; });
+/* harmony import */ var core_js_modules_web_dom_collections_iterator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/web.dom-collections.iterator */ "./node_modules/core-js/modules/web.dom-collections.iterator.js");
+/* harmony import */ var core_js_modules_web_dom_collections_iterator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_iterator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _emotion_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @emotion/core */ "./node_modules/@emotion/core/dist/core.browser.esm.js");
+/* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/dist/mobx-react.module.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../util */ "./src/util/index.js");
+/* harmony import */ var _ChatView__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ChatView */ "./src/components/ChatView.js");
+/* harmony import */ var _SelfVideoView__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./SelfVideoView */ "./src/components/SelfVideoView.js");
+/* harmony import */ var _RemoteVideoView__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./RemoteVideoView */ "./src/components/RemoteVideoView.js");
+
+
+var _dec, _class;
+
+/** @jsx jsx */
+
+
+
+
+
+
+
+let Consume = (_dec = Object(mobx_react__WEBPACK_IMPORTED_MODULE_2__["inject"])('root', 'consume'), _dec(_class = Object(mobx_react__WEBPACK_IMPORTED_MODULE_2__["observer"])(_class = class Consume extends react__WEBPACK_IMPORTED_MODULE_3___default.a.Component {
+  constructor(props) {
+    super(props);
+    this.props.root.setMode('consume');
+    const params = new URL(document.location).searchParams;
+    const key = params.get('key') || 'default';
+    this.props.consume.setKey(key);
+    this.props.consume.createWebSocket();
+    this.props.consume.setWsOnMessageHandler(ev => {
+      console.log(ev);
+      const json = JSON.parse(ev.data);
+      console.log(json);
+
+      if (json.type === 'produce') {
+        if (this.props.consume.pc !== null && this.props.consume.id === json.destination) {
+          console.log('message to me (pc)');
+          this.props.consume.setRecievedAnswer(json.sdp);
+        }
+      } else if (json.type === 'produce_dc') {
+        if (this.props.consume.dcPc !== null && this.props.consume.id === json.destination) {
+          console.log('message to me (dcPc)');
+          this.props.consume.setDcRecievedAnswer(json.sdp, this.props.consume.key, this.props.root.env);
+        }
+      }
+    });
+    this.props.consume.setPC(Object(_util__WEBPACK_IMPORTED_MODULE_4__["makeConsumePC"])(this.props.consume.id, this.props.consume.ws, this.props.consume.key));
+    this.props.consume.setPcOnTrackHandler(ev => {
+      console.log(ev);
+      console.log(ev.streams[0].getTracks());
+      this.props.consume.setRecorder(ev.streams[0]);
+      this.props.consume.target.srcObject = ev.streams[0];
+    });
+    this.props.consume.setDcPC(Object(_util__WEBPACK_IMPORTED_MODULE_4__["makeConsumeDataChPC"])(this.props.consume.id, this.props.consume.ws, this.props.consume.key, this.props.root.env));
+    this.props.consume.dcPc.createDataCh();
+    this.props.consume.setDcOnMessage();
+  }
+
+  componentWillUnmount() {
+    console.log('consume component unmount');
+    this.props.consume.setWsOnMessageHandler(() => {});
+    this.props.consume.unsetWebSocket();
+    this.props.consume.setPC(null);
+    this.props.consume.setDcPC(null);
+    this.props.consume.setTarget(null);
+    this.props.consume.setStream(null);
+    this.props.consume.setStreamSelf(null);
+    this.props.consume.unsetRecorder();
+    this.props.consume.clearSays();
+    this.props.consume.clearObjects();
+    this.props.consume.regenerateId();
+  }
+
+  render() {
+    const mq = [360, 576, 800].map(bp => "@media (min-width: ".concat(bp, "px)"));
+    return Object(_emotion_core__WEBPACK_IMPORTED_MODULE_1__["jsx"])(react__WEBPACK_IMPORTED_MODULE_3__["Fragment"], null, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_1__["jsx"])("div", {
+      css: {
+        marginTop: '12px'
+      }
+    }, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_1__["jsx"])("div", {
+      className: "row no-gutters"
+    }, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_1__["jsx"])("div", {
+      className: "col-md-9"
+    }, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_1__["jsx"])(_RemoteVideoView__WEBPACK_IMPORTED_MODULE_7__["default"], null)), Object(_emotion_core__WEBPACK_IMPORTED_MODULE_1__["jsx"])("div", {
+      className: "col-md-3",
+      css: {
+        [mq[0]]: {
+          position: 'absolute'
+        },
+        [mq[2]]: {
+          position: 'static'
+        }
+      }
+    }, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_1__["jsx"])(_SelfVideoView__WEBPACK_IMPORTED_MODULE_6__["default"], null))), Object(_emotion_core__WEBPACK_IMPORTED_MODULE_1__["jsx"])(_ChatView__WEBPACK_IMPORTED_MODULE_5__["default"], null)));
+  }
+
+}) || _class) || _class);
 
 
 /***/ }),
@@ -74232,21 +74232,21 @@ window.onunload = () => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ConsumeStore; });
 /* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util */ "./src/util/index.js");
-/* harmony import */ var _consume_SimpleState__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./consume_SimpleState */ "./src/store/consume_SimpleState.js");
-/* harmony import */ var _consume_ListState__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./consume_ListState */ "./src/store/consume_ListState.js");
-/* harmony import */ var _consume_PeerConnState__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./consume_PeerConnState */ "./src/store/consume_PeerConnState.js");
+/* harmony import */ var _SimpleState__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SimpleState */ "./src/store/SimpleState.js");
+/* harmony import */ var _ListState__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ListState */ "./src/store/ListState.js");
+/* harmony import */ var _PeerConnState__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./PeerConnState */ "./src/store/PeerConnState.js");
 
 
 
 
-class ConsumeStore extends Object(_consume_SimpleState__WEBPACK_IMPORTED_MODULE_1__["SimpleState"])(Object(_consume_ListState__WEBPACK_IMPORTED_MODULE_2__["ListState"])(Object(_consume_PeerConnState__WEBPACK_IMPORTED_MODULE_3__["PeerConnState"])(_util__WEBPACK_IMPORTED_MODULE_0__["Bowl"]))) {}
+class ConsumeStore extends Object(_SimpleState__WEBPACK_IMPORTED_MODULE_1__["SimpleState"])(Object(_ListState__WEBPACK_IMPORTED_MODULE_2__["ListState"])(Object(_PeerConnState__WEBPACK_IMPORTED_MODULE_3__["PeerConnState"])(_util__WEBPACK_IMPORTED_MODULE_0__["Bowl"]))) {}
 
 /***/ }),
 
-/***/ "./src/store/consume_ListState.js":
-/*!****************************************!*\
-  !*** ./src/store/consume_ListState.js ***!
-  \****************************************/
+/***/ "./src/store/ListState.js":
+/*!********************************!*\
+  !*** ./src/store/ListState.js ***!
+  \********************************/
 /*! exports provided: ListState */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -74337,10 +74337,10 @@ const ListState = Base => {
 
 /***/ }),
 
-/***/ "./src/store/consume_PeerConnState.js":
-/*!********************************************!*\
-  !*** ./src/store/consume_PeerConnState.js ***!
-  \********************************************/
+/***/ "./src/store/PeerConnState.js":
+/*!************************************!*\
+  !*** ./src/store/PeerConnState.js ***!
+  \************************************/
 /*! exports provided: PeerConnState */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -74507,10 +74507,10 @@ const PeerConnState = Base => {
 
 /***/ }),
 
-/***/ "./src/store/consume_SimpleState.js":
-/*!******************************************!*\
-  !*** ./src/store/consume_SimpleState.js ***!
-  \******************************************/
+/***/ "./src/store/SimpleState.js":
+/*!**********************************!*\
+  !*** ./src/store/SimpleState.js ***!
+  \**********************************/
 /*! exports provided: SimpleState */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 

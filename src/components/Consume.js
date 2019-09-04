@@ -3,7 +3,7 @@ import {jsx, css} from '@emotion/core';
 import {inject, observer} from 'mobx-react';
 import React, {Fragment} from 'react';
 import {makeConsumeDataChPC, makeConsumePC} from '../util';
-import ConsumeChatView from './ConsumeChatView';
+import ChatView from './ChatView';
 import SelfVideoView from './SelfVideoView';
 import RemoteVideoView from './RemoteVideoView';
 
@@ -83,7 +83,7 @@ export default class Consume extends React.Component {
                         <SelfVideoView />
                     </div>
                 </div>
-                <ConsumeChatView />
+                <ChatView />
             </div>
         </Fragment>
     }
