@@ -7,6 +7,8 @@ const PeerConnState = Base => class extends Base {
     @observable pc = null;
     @observable dcPc = null;
 
+    chunk = [];
+
     @action
     setPC(pc) {
         this.pc = pc;
@@ -85,14 +87,29 @@ const PeerConnState = Base => class extends Base {
             } else {
                 if (ev.data instanceof ArrayBuffer) {
                     const tary = new Uint8Array(ev.data);
-                    const header = tary.slice(0, 100);
-                    const id = header.slice(0, 36);
-                    const type = header.slice(36);
-                    const file = tary.slice(100);
-                    const typeStr = tArray2String(type.slice(0, type.indexOf(0)));
-                    const blob = new Blob([file], {type: typeStr});
-                    console.log(blob);
-                    this.addObj(tArray2String(id), blob);
+                    if (tary.length === 1 && tary[0] === 0) {
+                        const len = this.chunk.reduce((prev, next) => {
+                            return prev + next.length;
+                        }, 0);
+                        const tary = this.chunk.reduce((prev, next, index, it) => {
+                            const offset = it.reduce((p, n, idx) => {
+                                return idx < index ? p + n.length : p;
+                            }, 0);
+                            prev.set(next, offset);
+                            return prev;
+                        }, new Uint8Array(len));
+                        const header = tary.slice(0, 100);
+                        const id = header.slice(0, 36);
+                        const type = header.slice(36);
+                        const file = tary.slice(100);
+                        const typeStr = tArray2String(type.slice(0, type.indexOf(0)));
+                        const blob = new Blob([file], {type: typeStr});
+                        console.log(blob);
+                        this.addObj(tArray2String(id), blob);
+                        this.chunk = [];
+                    } else if (tary.length > 0) {
+                        this.chunk.push(tary);
+                    }
                 }
             }
         });
