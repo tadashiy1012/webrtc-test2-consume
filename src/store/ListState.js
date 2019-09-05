@@ -5,6 +5,7 @@ const ListState = Base => class extends Base {
     
     @observable says = [];
     @observable objects = [];
+    @observable chunk = [];
 
     @action
     addSay(id, say) {
@@ -36,6 +37,30 @@ const ListState = Base => class extends Base {
             console.log(result);
             tgt.pdf = result;
         });
+    }
+
+    @action
+    pushChunk(data) {
+        this.chunk.push(data);
+    }
+
+    @action
+    clearChunk() {
+        this.chunk = [];
+    }
+
+    @action
+    getChunkLength() {
+        return this.chunk.reduce((prev, next) => prev + next.length, 0);
+    }
+
+    @action
+    joinChunk() {
+        return this.chunk.reduce((prev, next, index, it) => {
+            const offset = it.reduce((p, n, idx) => idx < index ? p + n.length : p, 0);
+            prev.set(next, offset);
+            return prev;
+        }, new Uint8Array(this.getChunkLength()));
     }
 
 }

@@ -73813,17 +73813,23 @@ let ConsumeChatView = (_dec2 = Object(mobx_react__WEBPACK_IMPORTED_MODULE_2__["i
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Consume; });
-/* harmony import */ var core_js_modules_web_dom_collections_iterator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/web.dom-collections.iterator */ "./node_modules/core-js/modules/web.dom-collections.iterator.js");
-/* harmony import */ var core_js_modules_web_dom_collections_iterator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_iterator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _emotion_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @emotion/core */ "./node_modules/@emotion/core/dist/core.browser.esm.js");
-/* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/dist/mobx-react.module.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../util */ "./src/util/index.js");
-/* harmony import */ var _ChatView__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ChatView */ "./src/components/ChatView.js");
-/* harmony import */ var _SelfVideoView__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./SelfVideoView */ "./src/components/SelfVideoView.js");
-/* harmony import */ var _RemoteVideoView__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./RemoteVideoView */ "./src/components/RemoteVideoView.js");
-/* harmony import */ var _MessageSender__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./MessageSender */ "./src/components/MessageSender.js");
+/* harmony import */ var core_js_modules_es_array_buffer_slice__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array-buffer.slice */ "./node_modules/core-js/modules/es.array-buffer.slice.js");
+/* harmony import */ var core_js_modules_es_array_buffer_slice__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_buffer_slice__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var core_js_modules_es_typed_array_uint8_array__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.typed-array.uint8-array */ "./node_modules/core-js/modules/es.typed-array.uint8-array.js");
+/* harmony import */ var core_js_modules_es_typed_array_uint8_array__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_typed_array_uint8_array__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var core_js_modules_web_dom_collections_iterator__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/web.dom-collections.iterator */ "./node_modules/core-js/modules/web.dom-collections.iterator.js");
+/* harmony import */ var core_js_modules_web_dom_collections_iterator__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_iterator__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _emotion_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @emotion/core */ "./node_modules/@emotion/core/dist/core.browser.esm.js");
+/* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/dist/mobx-react.module.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../util */ "./src/util/index.js");
+/* harmony import */ var _ChatView__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./ChatView */ "./src/components/ChatView.js");
+/* harmony import */ var _SelfVideoView__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./SelfVideoView */ "./src/components/SelfVideoView.js");
+/* harmony import */ var _RemoteVideoView__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./RemoteVideoView */ "./src/components/RemoteVideoView.js");
+/* harmony import */ var _MessageSender__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./MessageSender */ "./src/components/MessageSender.js");
+
+
 
 
 var _dec, _class;
@@ -73837,7 +73843,7 @@ var _dec, _class;
 
 
 
-let Consume = (_dec = Object(mobx_react__WEBPACK_IMPORTED_MODULE_2__["inject"])('root', 'consume'), _dec(_class = Object(mobx_react__WEBPACK_IMPORTED_MODULE_2__["observer"])(_class = class Consume extends react__WEBPACK_IMPORTED_MODULE_3___default.a.Component {
+let Consume = (_dec = Object(mobx_react__WEBPACK_IMPORTED_MODULE_4__["inject"])('root', 'consume'), _dec(_class = Object(mobx_react__WEBPACK_IMPORTED_MODULE_4__["observer"])(_class = class Consume extends react__WEBPACK_IMPORTED_MODULE_5___default.a.Component {
   constructor(props) {
     super(props);
     this.props.root.setMode('consume');
@@ -73862,16 +73868,42 @@ let Consume = (_dec = Object(mobx_react__WEBPACK_IMPORTED_MODULE_2__["inject"])(
         }
       }
     });
-    this.props.consume.setPC(Object(_util__WEBPACK_IMPORTED_MODULE_4__["makeConsumePC"])(this.props.consume.id, this.props.consume.ws, this.props.consume.key));
+    this.props.consume.setPC(Object(_util__WEBPACK_IMPORTED_MODULE_6__["makeConsumePC"])(this.props.consume.id, this.props.consume.ws, this.props.consume.key));
     this.props.consume.setPcOnTrackHandler(ev => {
       console.log(ev);
       console.log(ev.streams[0].getTracks());
       this.props.consume.setRecorder(ev.streams[0]);
       this.props.consume.target.srcObject = ev.streams[0];
     });
-    this.props.consume.setDcPC(Object(_util__WEBPACK_IMPORTED_MODULE_4__["makeConsumeDataChPC"])(this.props.consume.id, this.props.consume.ws, this.props.consume.key, this.props.root.env));
+    this.props.consume.setDcPC(Object(_util__WEBPACK_IMPORTED_MODULE_6__["makeConsumeDataChPC"])(this.props.consume.id, this.props.consume.ws, this.props.consume.key, this.props.root.env));
     this.props.consume.dcPc.createDataCh();
-    this.props.consume.setDcOnMessage();
+    this.props.consume.dcPc.setOnMessageHandler(ev => {
+      console.log(ev);
+
+      if (typeof ev.data === 'string') {
+        const json = JSON.parse(ev.data);
+        this.props.consume.addSay(json.id, json.message);
+      } else if (ev.data instanceof ArrayBuffer) {
+        const tary = new Uint8Array(ev.data);
+
+        if (tary.length === 1 && tary[0] === 0) {
+          const joined = this.props.consume.joinChunk();
+          const header = joined.slice(0, 100);
+          const id = Object(_util__WEBPACK_IMPORTED_MODULE_6__["tArray2String"])(header.slice(0, 36));
+          const type = header.slice(36);
+          const file = joined.slice(100);
+          const typeStr = Object(_util__WEBPACK_IMPORTED_MODULE_6__["tArray2String"])(type.slice(0, type.indexOf(0)));
+          const blob = new Blob([file], {
+            type: typeStr
+          });
+          console.log(blob);
+          this.props.consume.addObj(id, blob);
+          this.props.consume.clearChunk();
+        } else if (tary.length > 0) {
+          this.props.consume.pushChunk(tary);
+        }
+      }
+    });
   }
 
   componentWillUnmount() {
@@ -73891,11 +73923,11 @@ let Consume = (_dec = Object(mobx_react__WEBPACK_IMPORTED_MODULE_2__["inject"])(
 
   render() {
     const mq = [360, 576, 800].map(bp => "@media (min-width: ".concat(bp, "px)"));
-    return Object(_emotion_core__WEBPACK_IMPORTED_MODULE_1__["jsx"])(react__WEBPACK_IMPORTED_MODULE_3__["Fragment"], null, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_1__["jsx"])("div", {
+    return Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__["jsx"])(react__WEBPACK_IMPORTED_MODULE_5__["Fragment"], null, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__["jsx"])("div", {
       className: "row no-gutters"
-    }, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_1__["jsx"])("div", {
+    }, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__["jsx"])("div", {
       className: "col-md-9"
-    }, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_1__["jsx"])(_RemoteVideoView__WEBPACK_IMPORTED_MODULE_7__["default"], null)), Object(_emotion_core__WEBPACK_IMPORTED_MODULE_1__["jsx"])("div", {
+    }, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__["jsx"])(_RemoteVideoView__WEBPACK_IMPORTED_MODULE_9__["default"], null)), Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__["jsx"])("div", {
       className: "col-md-3",
       css: {
         [mq[0]]: {
@@ -73905,7 +73937,7 @@ let Consume = (_dec = Object(mobx_react__WEBPACK_IMPORTED_MODULE_2__["inject"])(
           position: 'static'
         }
       }
-    }, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_1__["jsx"])(_SelfVideoView__WEBPACK_IMPORTED_MODULE_6__["default"], null), Object(_emotion_core__WEBPACK_IMPORTED_MODULE_1__["jsx"])(_MessageSender__WEBPACK_IMPORTED_MODULE_8__["default"], null))), Object(_emotion_core__WEBPACK_IMPORTED_MODULE_1__["jsx"])(_ChatView__WEBPACK_IMPORTED_MODULE_5__["default"], null));
+    }, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__["jsx"])(_SelfVideoView__WEBPACK_IMPORTED_MODULE_8__["default"], null), Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__["jsx"])(_MessageSender__WEBPACK_IMPORTED_MODULE_10__["default"], null))), Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__["jsx"])(_ChatView__WEBPACK_IMPORTED_MODULE_7__["default"], null));
   }
 
 }) || _class) || _class);
@@ -74330,10 +74362,16 @@ class ConsumeStore extends Object(_SimpleState__WEBPACK_IMPORTED_MODULE_1__["Sim
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ListState", function() { return ListState; });
-/* harmony import */ var core_js_modules_web_dom_collections_iterator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/web.dom-collections.iterator */ "./node_modules/core-js/modules/web.dom-collections.iterator.js");
-/* harmony import */ var core_js_modules_web_dom_collections_iterator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_iterator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../util */ "./src/util/index.js");
+/* harmony import */ var core_js_modules_es_array_buffer_slice__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array-buffer.slice */ "./node_modules/core-js/modules/es.array-buffer.slice.js");
+/* harmony import */ var core_js_modules_es_array_buffer_slice__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_buffer_slice__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var core_js_modules_es_typed_array_uint8_array__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.typed-array.uint8-array */ "./node_modules/core-js/modules/es.typed-array.uint8-array.js");
+/* harmony import */ var core_js_modules_es_typed_array_uint8_array__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_typed_array_uint8_array__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var core_js_modules_web_dom_collections_iterator__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/web.dom-collections.iterator */ "./node_modules/core-js/modules/web.dom-collections.iterator.js");
+/* harmony import */ var core_js_modules_web_dom_collections_iterator__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_iterator__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../util */ "./src/util/index.js");
+
+
 
 
 function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
@@ -74346,7 +74384,7 @@ function _initializerWarningHelper(descriptor, context) { throw new Error('Decor
 
 
 const ListState = Base => {
-  var _class, _descriptor, _descriptor2, _temp;
+  var _class, _descriptor, _descriptor2, _descriptor3, _temp;
 
   return _class = (_temp = class _class extends Base {
     constructor(...args) {
@@ -74355,6 +74393,8 @@ const ListState = Base => {
       _initializerDefineProperty(this, "says", _descriptor, this);
 
       _initializerDefineProperty(this, "objects", _descriptor2, this);
+
+      _initializerDefineProperty(this, "chunk", _descriptor3, this);
     }
 
     addSay(id, say) {
@@ -74387,27 +74427,54 @@ const ListState = Base => {
 
     readPdf(object) {
       const tgt = this.objects.find(e => e.time === object.time);
-      Object(_util__WEBPACK_IMPORTED_MODULE_2__["getDoc"])(object.obj).then(result => {
+      Object(_util__WEBPACK_IMPORTED_MODULE_4__["getDoc"])(object.obj).then(result => {
         console.log(result);
         tgt.pdf = result;
       });
     }
 
-  }, _temp), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "says", [mobx__WEBPACK_IMPORTED_MODULE_1__["observable"]], {
+    pushChunk(data) {
+      this.chunk.push(data);
+    }
+
+    clearChunk() {
+      this.chunk = [];
+    }
+
+    getChunkLength() {
+      return this.chunk.reduce((prev, next) => prev + next.length, 0);
+    }
+
+    joinChunk() {
+      return this.chunk.reduce((prev, next, index, it) => {
+        const offset = it.reduce((p, n, idx) => idx < index ? p + n.length : p, 0);
+        prev.set(next, offset);
+        return prev;
+      }, new Uint8Array(this.getChunkLength()));
+    }
+
+  }, _temp), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "says", [mobx__WEBPACK_IMPORTED_MODULE_3__["observable"]], {
     configurable: true,
     enumerable: true,
     writable: true,
     initializer: function () {
       return [];
     }
-  }), _descriptor2 = _applyDecoratedDescriptor(_class.prototype, "objects", [mobx__WEBPACK_IMPORTED_MODULE_1__["observable"]], {
+  }), _descriptor2 = _applyDecoratedDescriptor(_class.prototype, "objects", [mobx__WEBPACK_IMPORTED_MODULE_3__["observable"]], {
     configurable: true,
     enumerable: true,
     writable: true,
     initializer: function () {
       return [];
     }
-  }), _applyDecoratedDescriptor(_class.prototype, "addSay", [mobx__WEBPACK_IMPORTED_MODULE_1__["action"]], Object.getOwnPropertyDescriptor(_class.prototype, "addSay"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "clearSays", [mobx__WEBPACK_IMPORTED_MODULE_1__["action"]], Object.getOwnPropertyDescriptor(_class.prototype, "clearSays"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "addObj", [mobx__WEBPACK_IMPORTED_MODULE_1__["action"]], Object.getOwnPropertyDescriptor(_class.prototype, "addObj"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "clearObjects", [mobx__WEBPACK_IMPORTED_MODULE_1__["action"]], Object.getOwnPropertyDescriptor(_class.prototype, "clearObjects"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "readPdf", [mobx__WEBPACK_IMPORTED_MODULE_1__["action"]], Object.getOwnPropertyDescriptor(_class.prototype, "readPdf"), _class.prototype)), _class;
+  }), _descriptor3 = _applyDecoratedDescriptor(_class.prototype, "chunk", [mobx__WEBPACK_IMPORTED_MODULE_3__["observable"]], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return [];
+    }
+  }), _applyDecoratedDescriptor(_class.prototype, "addSay", [mobx__WEBPACK_IMPORTED_MODULE_3__["action"]], Object.getOwnPropertyDescriptor(_class.prototype, "addSay"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "clearSays", [mobx__WEBPACK_IMPORTED_MODULE_3__["action"]], Object.getOwnPropertyDescriptor(_class.prototype, "clearSays"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "addObj", [mobx__WEBPACK_IMPORTED_MODULE_3__["action"]], Object.getOwnPropertyDescriptor(_class.prototype, "addObj"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "clearObjects", [mobx__WEBPACK_IMPORTED_MODULE_3__["action"]], Object.getOwnPropertyDescriptor(_class.prototype, "clearObjects"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "readPdf", [mobx__WEBPACK_IMPORTED_MODULE_3__["action"]], Object.getOwnPropertyDescriptor(_class.prototype, "readPdf"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "pushChunk", [mobx__WEBPACK_IMPORTED_MODULE_3__["action"]], Object.getOwnPropertyDescriptor(_class.prototype, "pushChunk"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "clearChunk", [mobx__WEBPACK_IMPORTED_MODULE_3__["action"]], Object.getOwnPropertyDescriptor(_class.prototype, "clearChunk"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "getChunkLength", [mobx__WEBPACK_IMPORTED_MODULE_3__["action"]], Object.getOwnPropertyDescriptor(_class.prototype, "getChunkLength"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "joinChunk", [mobx__WEBPACK_IMPORTED_MODULE_3__["action"]], Object.getOwnPropertyDescriptor(_class.prototype, "joinChunk"), _class.prototype)), _class;
 };
 
 
@@ -74424,17 +74491,11 @@ const ListState = Base => {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PeerConnState", function() { return PeerConnState; });
-/* harmony import */ var core_js_modules_es_array_buffer_slice__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es.array-buffer.slice */ "./node_modules/core-js/modules/es.array-buffer.slice.js");
-/* harmony import */ var core_js_modules_es_array_buffer_slice__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_array_buffer_slice__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var core_js_modules_es_typed_array_uint8_array__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es.typed-array.uint8-array */ "./node_modules/core-js/modules/es.typed-array.uint8-array.js");
-/* harmony import */ var core_js_modules_es_typed_array_uint8_array__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es_typed_array_uint8_array__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var core_js_modules_web_dom_collections_iterator__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! core-js/modules/web.dom-collections.iterator */ "./node_modules/core-js/modules/web.dom-collections.iterator.js");
-/* harmony import */ var core_js_modules_web_dom_collections_iterator__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_iterator__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
-/* harmony import */ var base64_arraybuffer_es6__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! base64-arraybuffer-es6 */ "./node_modules/base64-arraybuffer-es6/dist/base64-arraybuffer-es.js");
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../util */ "./src/util/index.js");
-
-
+/* harmony import */ var core_js_modules_web_dom_collections_iterator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/web.dom-collections.iterator */ "./node_modules/core-js/modules/web.dom-collections.iterator.js");
+/* harmony import */ var core_js_modules_web_dom_collections_iterator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_collections_iterator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var mobx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! mobx */ "./node_modules/mobx/lib/mobx.module.js");
+/* harmony import */ var base64_arraybuffer_es6__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! base64-arraybuffer-es6 */ "./node_modules/base64-arraybuffer-es6/dist/base64-arraybuffer-es.js");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../util */ "./src/util/index.js");
 
 
 function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
@@ -74499,7 +74560,7 @@ const PeerConnState = Base => {
 
       (async () => {
         if (this.pc.conn.remoteDescription !== null && this.pc.conn.remoteDescription !== recievedAnswer) {
-          this.setPC(Object(_util__WEBPACK_IMPORTED_MODULE_5__["makeConsumePC"])(this.id, this.ws, true));
+          this.setPC(Object(_util__WEBPACK_IMPORTED_MODULE_3__["makeConsumePC"])(this.id, this.ws, true));
           await this.pc.setLocalDesc((await this.pc.createOffer()));
         }
 
@@ -74515,63 +74576,6 @@ const PeerConnState = Base => {
       this.dcPc = dcPc;
     }
 
-    setDcOnMessage() {
-      this.dcPc.setOnMessageHandler(ev => {
-        console.log(ev);
-
-        if (typeof ev.data === 'string') {
-          const json = JSON.parse(ev.data);
-
-          if (json.type === 'plane') {
-            this.addSay(json.id, json.message);
-          } else if (json.type === 'b64') {
-            const buf = Object(base64_arraybuffer_es6__WEBPACK_IMPORTED_MODULE_4__["decode"])(json.message);
-            const tary = new Uint8Array(buf);
-            const header = tary.slice(0, 100);
-            const id = header.slice(0, 36);
-            const type = header.slice(36);
-            const file = tary.slice(100);
-            const typeStr = Object(_util__WEBPACK_IMPORTED_MODULE_5__["tArray2String"])(type.slice(0, type.indexOf(0)));
-            const blob = new Blob([file], {
-              type: typeStr
-            });
-            console.log(blob);
-            this.addObj(Object(_util__WEBPACK_IMPORTED_MODULE_5__["tArray2String"])(id), blob);
-          }
-        } else {
-          if (ev.data instanceof ArrayBuffer) {
-            const tary = new Uint8Array(ev.data);
-
-            if (tary.length === 1 && tary[0] === 0) {
-              const len = this.chunk.reduce((prev, next) => {
-                return prev + next.length;
-              }, 0);
-              const tary = this.chunk.reduce((prev, next, index, it) => {
-                const offset = it.reduce((p, n, idx) => {
-                  return idx < index ? p + n.length : p;
-                }, 0);
-                prev.set(next, offset);
-                return prev;
-              }, new Uint8Array(len));
-              const header = tary.slice(0, 100);
-              const id = header.slice(0, 36);
-              const type = header.slice(36);
-              const file = tary.slice(100);
-              const typeStr = Object(_util__WEBPACK_IMPORTED_MODULE_5__["tArray2String"])(type.slice(0, type.indexOf(0)));
-              const blob = new Blob([file], {
-                type: typeStr
-              });
-              console.log(blob);
-              this.addObj(Object(_util__WEBPACK_IMPORTED_MODULE_5__["tArray2String"])(id), blob);
-              this.chunk = [];
-            } else if (tary.length > 0) {
-              this.chunk.push(tary);
-            }
-          }
-        }
-      });
-    }
-
     setDcRecievedAnswer(sdp, key, env) {
       const recievedAnswer = new RTCSessionDescription({
         type: 'answer',
@@ -74581,7 +74585,7 @@ const PeerConnState = Base => {
       (async () => {
         if (this.dcPc.conn.remoteDescription !== null) {
           if (this.dcPc.conn.remoteDescription !== recievedAnswer) {
-            this.setDcPC(Object(_util__WEBPACK_IMPORTED_MODULE_5__["makeConsumeDataChPC"])(this.id, this.ws, key, env, true));
+            this.setDcPC(Object(_util__WEBPACK_IMPORTED_MODULE_3__["makeConsumeDataChPC"])(this.id, this.ws, key, env, true));
             await this.dcPc.setLocalDesc((await this.dcPc.createOffer()));
             this.setDcOnMessage();
           }
@@ -74591,21 +74595,21 @@ const PeerConnState = Base => {
       })();
     }
 
-  }, _temp), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "pc", [mobx__WEBPACK_IMPORTED_MODULE_3__["observable"]], {
+  }, _temp), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "pc", [mobx__WEBPACK_IMPORTED_MODULE_1__["observable"]], {
     configurable: true,
     enumerable: true,
     writable: true,
     initializer: function () {
       return null;
     }
-  }), _descriptor2 = _applyDecoratedDescriptor(_class.prototype, "dcPc", [mobx__WEBPACK_IMPORTED_MODULE_3__["observable"]], {
+  }), _descriptor2 = _applyDecoratedDescriptor(_class.prototype, "dcPc", [mobx__WEBPACK_IMPORTED_MODULE_1__["observable"]], {
     configurable: true,
     enumerable: true,
     writable: true,
     initializer: function () {
       return null;
     }
-  }), _applyDecoratedDescriptor(_class.prototype, "setPC", [mobx__WEBPACK_IMPORTED_MODULE_3__["action"]], Object.getOwnPropertyDescriptor(_class.prototype, "setPC"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "addTrackToPc", [mobx__WEBPACK_IMPORTED_MODULE_3__["action"]], Object.getOwnPropertyDescriptor(_class.prototype, "addTrackToPc"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "setRecievedAnswer", [mobx__WEBPACK_IMPORTED_MODULE_3__["action"]], Object.getOwnPropertyDescriptor(_class.prototype, "setRecievedAnswer"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "setPcOnTrackHandler", [mobx__WEBPACK_IMPORTED_MODULE_3__["action"]], Object.getOwnPropertyDescriptor(_class.prototype, "setPcOnTrackHandler"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "setDcPC", [mobx__WEBPACK_IMPORTED_MODULE_3__["action"]], Object.getOwnPropertyDescriptor(_class.prototype, "setDcPC"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "setDcOnMessage", [mobx__WEBPACK_IMPORTED_MODULE_3__["action"]], Object.getOwnPropertyDescriptor(_class.prototype, "setDcOnMessage"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "setDcRecievedAnswer", [mobx__WEBPACK_IMPORTED_MODULE_3__["action"]], Object.getOwnPropertyDescriptor(_class.prototype, "setDcRecievedAnswer"), _class.prototype)), _class;
+  }), _applyDecoratedDescriptor(_class.prototype, "setPC", [mobx__WEBPACK_IMPORTED_MODULE_1__["action"]], Object.getOwnPropertyDescriptor(_class.prototype, "setPC"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "addTrackToPc", [mobx__WEBPACK_IMPORTED_MODULE_1__["action"]], Object.getOwnPropertyDescriptor(_class.prototype, "addTrackToPc"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "setRecievedAnswer", [mobx__WEBPACK_IMPORTED_MODULE_1__["action"]], Object.getOwnPropertyDescriptor(_class.prototype, "setRecievedAnswer"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "setPcOnTrackHandler", [mobx__WEBPACK_IMPORTED_MODULE_1__["action"]], Object.getOwnPropertyDescriptor(_class.prototype, "setPcOnTrackHandler"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "setDcPC", [mobx__WEBPACK_IMPORTED_MODULE_1__["action"]], Object.getOwnPropertyDescriptor(_class.prototype, "setDcPC"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "setDcRecievedAnswer", [mobx__WEBPACK_IMPORTED_MODULE_1__["action"]], Object.getOwnPropertyDescriptor(_class.prototype, "setDcRecievedAnswer"), _class.prototype)), _class;
 };
 
 

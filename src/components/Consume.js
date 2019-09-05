@@ -2,7 +2,7 @@
 import {jsx, css} from '@emotion/core';
 import {inject, observer} from 'mobx-react';
 import React, {Fragment} from 'react';
-import {makeConsumeDataChPC, makeConsumePC} from '../util';
+import {makeConsumeDataChPC, makeConsumePC, tArray2String} from '../util';
 import ChatView from './ChatView';
 import SelfVideoView from './SelfVideoView';
 import RemoteVideoView from './RemoteVideoView';
@@ -41,7 +41,9 @@ export default class Consume extends React.Component {
             }
         });
         this.props.consume.setPC(makeConsumePC(
-            this.props.consume.id, this.props.consume.ws, this.props.consume.key
+            this.props.consume.id, 
+            this.props.consume.ws, 
+            this.props.consume.key
         ));
         this.props.consume.setPcOnTrackHandler((ev) => {
             console.log(ev);
@@ -50,11 +52,35 @@ export default class Consume extends React.Component {
             this.props.consume.target.srcObject = ev.streams[0];
         });
         this.props.consume.setDcPC(makeConsumeDataChPC(
-            this.props.consume.id, this.props.consume.ws,
-            this.props.consume.key, this.props.root.env
+            this.props.consume.id, 
+            this.props.consume.ws,
+            this.props.consume.key, 
+            this.props.root.env
         ));
         this.props.consume.dcPc.createDataCh();
-        this.props.consume.setDcOnMessage();
+        this.props.consume.dcPc.setOnMessageHandler((ev) => {
+            console.log(ev);
+            if (typeof ev.data === 'string') {
+                const json = JSON.parse(ev.data);
+                this.props.consume.addSay(json.id, json.message);
+            } else if (ev.data instanceof ArrayBuffer) {
+                const tary = new Uint8Array(ev.data);
+                if (tary.length === 1 && tary[0] === 0) {
+                    const joined = this.props.consume.joinChunk();
+                    const header = joined.slice(0, 100);
+                    const id = tArray2String(header.slice(0, 36));
+                    const type = header.slice(36);
+                    const file = joined.slice(100);
+                    const typeStr = tArray2String(type.slice(0, type.indexOf(0)));
+                    const blob = new Blob([file], {type: typeStr});
+                    console.log(blob);
+                    this.props.consume.addObj(id, blob);
+                    this.props.consume.clearChunk();
+                } else if (tary.length > 0) {
+                    this.props.consume.pushChunk(tary);
+                }
+            }
+        });
     }
     componentWillUnmount() {
         console.log('consume component unmount');
