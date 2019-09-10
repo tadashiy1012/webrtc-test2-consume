@@ -73856,6 +73856,11 @@ let Consume = (_dec = Object(mobx_react__WEBPACK_IMPORTED_MODULE_4__["inject"])(
       const json = JSON.parse(ev.data);
       console.log(json);
 
+      if (json.destination !== this.props.consume.id) {
+        console.log('destination miss match. this message is not to me.');
+        return;
+      }
+
       if (json.type === 'produce') {
         if (this.props.consume.pc !== null && this.props.consume.id === json.destination) {
           console.log('message to me (pc)');
@@ -75207,12 +75212,6 @@ __webpack_require__.r(__webpack_exports__);
 let iceServers = [{
   "urls": "stun:stun.l.google.com:19302"
 }];
-
-if (document.location.host === 'localhost:8080') {
-  iceServers = [];
-}
-
-console.log(iceServers);
 
 
 /***/ }),

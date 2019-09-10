@@ -22,6 +22,10 @@ export default class Consume extends React.Component {
             console.log(ev);
             const json = JSON.parse(ev.data);
             console.log(json);
+            if (json.destination !== this.props.consume.id) {
+                console.log('destination miss match. this message is not to me.');
+                return;
+            }
             if (json.type === 'produce') {
                 if (this.props.consume.pc !== null 
                         && this.props.consume.id === json.destination) {
