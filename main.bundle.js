@@ -73645,50 +73645,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/dist/mobx-react.module.js");
 /* harmony import */ var _emotion_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @emotion/core */ "./node_modules/@emotion/core/dist/core.browser.esm.js");
 /* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../util */ "./src/util/index.js");
+/* harmony import */ var _PdfView__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./PdfView */ "./src/components/PdfView.js");
 
 
-var _dec, _class, _dec2, _class2;
+var _dec, _class;
 
 /** @jsx jsx */
 
 
 
 
-let PDFView = (_dec = Object(mobx_react__WEBPACK_IMPORTED_MODULE_2__["inject"])('consume'), _dec(_class = Object(mobx_react__WEBPACK_IMPORTED_MODULE_2__["observer"])(_class = class PDFView extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
-  constructor(props) {
-    super(props);
-    this.pdfRef = react__WEBPACK_IMPORTED_MODULE_1___default.a.createRef();
-    this.props.consume.readPdf(this.props.tgt);
-  }
 
-  render() {
-    const tgt = this.props.consume.objects.find(e => e.time === this.props.tgt.time);
-
-    if (tgt.pdf !== null) {
-      tgt.pdf.getPage(1).then(page => {
-        const scale = 0.7;
-        const view = page.getViewport({
-          scale
-        });
-        const canvas = this.pdfRef.current;
-        const ctx = canvas.getContext('2d');
-        canvas.height = view.height;
-        canvas.width = view.width;
-        page.render({
-          canvasContext: ctx,
-          viewport: view
-        });
-      });
-    }
-
-    return Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__["jsx"])("canvas", {
-      ref: this.pdfRef,
-      className: "rounded mx-auto d-block"
-    });
-  }
-
-}) || _class) || _class);
-let ConsumeChatView = (_dec2 = Object(mobx_react__WEBPACK_IMPORTED_MODULE_2__["inject"])('consume'), _dec2(_class2 = Object(mobx_react__WEBPACK_IMPORTED_MODULE_2__["observer"])(_class2 = class ConsumeChatView extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
+let ConsumeChatView = (_dec = Object(mobx_react__WEBPACK_IMPORTED_MODULE_2__["inject"])('consume'), _dec(_class = Object(mobx_react__WEBPACK_IMPORTED_MODULE_2__["observer"])(_class = class ConsumeChatView extends react__WEBPACK_IMPORTED_MODULE_1___default.a.Component {
   constructor(props) {
     super(props);
     this.textRef = react__WEBPACK_IMPORTED_MODULE_1___default.a.createRef();
@@ -73700,7 +73668,6 @@ let ConsumeChatView = (_dec2 = Object(mobx_react__WEBPACK_IMPORTED_MODULE_2__["i
   }
 
   render() {
-    const mq = [360, 576, 800].map(bp => "@media (min-width: ".concat(bp, "px)"));
     const ary = [...this.props.consume.says, ...this.props.consume.objects].sort((a, b) => a.time - b.time);
     const children = ary.map((e, idx) => {
       console.log(e);
@@ -73720,10 +73687,10 @@ let ConsumeChatView = (_dec2 = Object(mobx_react__WEBPACK_IMPORTED_MODULE_2__["i
           }, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__["jsx"])("img", {
             src: URL.createObjectURL(e.obj),
             css: {
-              [mq[0]]: {
+              [_util__WEBPACK_IMPORTED_MODULE_4__["mq"][0]]: {
                 width: '30%'
               },
-              [mq[2]]: {
+              [_util__WEBPACK_IMPORTED_MODULE_4__["mq"][2]]: {
                 width: '30%'
               },
               border: 'solid 1px #ccc'
@@ -73740,7 +73707,7 @@ let ConsumeChatView = (_dec2 = Object(mobx_react__WEBPACK_IMPORTED_MODULE_2__["i
             css: {
               padding: '22px'
             }
-          }, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__["jsx"])(PDFView, {
+          }, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__["jsx"])(_PdfView__WEBPACK_IMPORTED_MODULE_5__["default"], {
             tgt: e
           }), Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__["jsx"])("a", {
             href: URL.createObjectURL(e.obj),
@@ -73763,10 +73730,10 @@ let ConsumeChatView = (_dec2 = Object(mobx_react__WEBPACK_IMPORTED_MODULE_2__["i
     }, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__["jsx"])("h4", null, "chat log"), Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__["jsx"])("ul", {
       className: "overflow-auto",
       css: {
-        [mq[0]]: {
+        [_util__WEBPACK_IMPORTED_MODULE_4__["mq"][0]]: {
           height: '100px'
         },
-        [mq[2]]: {
+        [_util__WEBPACK_IMPORTED_MODULE_4__["mq"][2]]: {
           height: '260px'
         },
         width: '100%'
@@ -73774,10 +73741,10 @@ let ConsumeChatView = (_dec2 = Object(mobx_react__WEBPACK_IMPORTED_MODULE_2__["i
     }, children))), Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__["jsx"])("div", {
       className: "row",
       css: {
-        [mq[0]]: {
+        [_util__WEBPACK_IMPORTED_MODULE_4__["mq"][0]]: {
           display: 'block'
         },
-        [mq[2]]: {
+        [_util__WEBPACK_IMPORTED_MODULE_4__["mq"][2]]: {
           display: 'none'
         }
       }
@@ -73798,7 +73765,7 @@ let ConsumeChatView = (_dec2 = Object(mobx_react__WEBPACK_IMPORTED_MODULE_2__["i
     }, "send message"))));
   }
 
-}) || _class2) || _class2);
+}) || _class) || _class);
 
 
 /***/ }),
@@ -73927,7 +73894,6 @@ let Consume = (_dec = Object(mobx_react__WEBPACK_IMPORTED_MODULE_4__["inject"])(
   }
 
   render() {
-    const mq = [360, 576, 800].map(bp => "@media (min-width: ".concat(bp, "px)"));
     return Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__["jsx"])(react__WEBPACK_IMPORTED_MODULE_5__["Fragment"], null, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__["jsx"])("div", {
       className: "row no-gutters"
     }, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__["jsx"])("div", {
@@ -73935,10 +73901,10 @@ let Consume = (_dec = Object(mobx_react__WEBPACK_IMPORTED_MODULE_4__["inject"])(
     }, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__["jsx"])(_RemoteVideoView__WEBPACK_IMPORTED_MODULE_9__["default"], null)), Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__["jsx"])("div", {
       className: "col-md-3",
       css: {
-        [mq[0]]: {
+        [_util__WEBPACK_IMPORTED_MODULE_6__["mq"][0]]: {
           position: 'absolute'
         },
-        [mq[2]]: {
+        [_util__WEBPACK_IMPORTED_MODULE_6__["mq"][2]]: {
           position: 'static'
         }
       }
@@ -73964,9 +73930,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/dist/mobx-react.module.js");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../util */ "./src/util/index.js");
 var _dec, _class;
 
 /** @jsx jsx */
+
 
 
 
@@ -73982,14 +73950,13 @@ let MessageSender = (_dec = Object(mobx_react__WEBPACK_IMPORTED_MODULE_2__["inje
   }
 
   render() {
-    const mq = [360, 576, 800].map(bp => "@media (min-width: ".concat(bp, "px)"));
     return Object(_emotion_core__WEBPACK_IMPORTED_MODULE_0__["jsx"])(react__WEBPACK_IMPORTED_MODULE_1__["Fragment"], null, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_0__["jsx"])("div", {
       className: "row",
       css: {
-        [mq[0]]: {
+        [_util__WEBPACK_IMPORTED_MODULE_3__["mq"][0]]: {
           display: 'none'
         },
-        [mq[2]]: {
+        [_util__WEBPACK_IMPORTED_MODULE_3__["mq"][2]]: {
           display: 'block'
         }
       }
@@ -74011,6 +73978,66 @@ let MessageSender = (_dec = Object(mobx_react__WEBPACK_IMPORTED_MODULE_2__["inje
       },
       className: "btn btn-primary btn-block"
     }, "send message"))));
+  }
+
+}) || _class) || _class);
+
+
+/***/ }),
+
+/***/ "./src/components/PdfView.js":
+/*!***********************************!*\
+  !*** ./src/components/PdfView.js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return PDFView; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var mobx_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! mobx-react */ "./node_modules/mobx-react/dist/mobx-react.module.js");
+/* harmony import */ var _emotion_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @emotion/core */ "./node_modules/@emotion/core/dist/core.browser.esm.js");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../util */ "./src/util/index.js");
+var _dec, _class;
+
+/** @jsx jsx */
+
+
+
+
+let PDFView = (_dec = Object(mobx_react__WEBPACK_IMPORTED_MODULE_1__["inject"])('consume'), _dec(_class = Object(mobx_react__WEBPACK_IMPORTED_MODULE_1__["observer"])(_class = class PDFView extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
+  constructor(props) {
+    super(props);
+    this.pdfRef = react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef();
+    this.props.consume.readPdf(this.props.tgt);
+  }
+
+  render() {
+    const tgt = this.props.consume.objects.find(e => e.time === this.props.tgt.time);
+
+    if (tgt.pdf !== null) {
+      tgt.pdf.getPage(1).then(page => {
+        const scale = 0.7;
+        const view = page.getViewport({
+          scale
+        });
+        const canvas = this.pdfRef.current;
+        const ctx = canvas.getContext('2d');
+        canvas.height = view.height;
+        canvas.width = view.width;
+        page.render({
+          canvasContext: ctx,
+          viewport: view
+        });
+      });
+    }
+
+    return Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__["jsx"])("canvas", {
+      ref: this.pdfRef,
+      className: "rounded mx-auto d-block"
+    });
   }
 
 }) || _class) || _class);
@@ -74067,7 +74094,6 @@ let RemoteVideoView = (_dec = Object(mobx_react__WEBPACK_IMPORTED_MODULE_2__["in
   }
 
   render() {
-    const mq = [360, 576, 800].map(bp => "@media (min-width: ".concat(bp, "px)"));
     const icon = this.props.consume.rec ? '🔴' : '⚫';
     return Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__["jsx"])(react__WEBPACK_IMPORTED_MODULE_1__["Fragment"], null, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__["jsx"])("video", {
       ref: video => {
@@ -74090,10 +74116,10 @@ let RemoteVideoView = (_dec = Object(mobx_react__WEBPACK_IMPORTED_MODULE_2__["in
       css: {
         margin: '8px 0px',
         display: 'grid',
-        [mq[0]]: {
+        [_util__WEBPACK_IMPORTED_MODULE_4__["mq"][0]]: {
           gridTemplateColumns: 'repeat(2, 100px)'
         },
-        [mq[2]]: {
+        [_util__WEBPACK_IMPORTED_MODULE_4__["mq"][2]]: {
           gridTemplateColumns: '100px'
         },
         justifyContent: 'space-around'
@@ -74106,10 +74132,10 @@ let RemoteVideoView = (_dec = Object(mobx_react__WEBPACK_IMPORTED_MODULE_2__["in
     }, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__["jsx"])("span", null, icon), "rec"), Object(_emotion_core__WEBPACK_IMPORTED_MODULE_3__["jsx"])("div", {
       className: "form-check",
       css: {
-        [mq[0]]: {
+        [_util__WEBPACK_IMPORTED_MODULE_4__["mq"][0]]: {
           display: 'inline'
         },
-        [mq[2]]: {
+        [_util__WEBPACK_IMPORTED_MODULE_4__["mq"][2]]: {
           display: 'none'
         }
       }
@@ -74198,7 +74224,6 @@ let SelfVideoView = (_dec = Object(mobx_react__WEBPACK_IMPORTED_MODULE_1__["inje
   }
 
   render() {
-    const mq = [360, 576, 800].map(bp => "@media (min-width: ".concat(bp, "px)"));
     return Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__["jsx"])(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__["jsx"])("video", {
       ref: this.selfVideoRef,
       autoPlay: true,
@@ -74206,14 +74231,14 @@ let SelfVideoView = (_dec = Object(mobx_react__WEBPACK_IMPORTED_MODULE_1__["inje
       "webkit-playsinline": "true",
       playsInline: true,
       css: {
-        [mq[0]]: {
+        [_util__WEBPACK_IMPORTED_MODULE_3__["mq"][0]]: {
           width: '82px',
           height: '62px',
           position: 'absolute',
           right: '11%',
           top: '4px'
         },
-        [mq[2]]: {
+        [_util__WEBPACK_IMPORTED_MODULE_3__["mq"][2]]: {
           width: '77%',
           height: 'auto',
           position: 'static',
@@ -74224,10 +74249,10 @@ let SelfVideoView = (_dec = Object(mobx_react__WEBPACK_IMPORTED_MODULE_1__["inje
       }
     }), Object(_emotion_core__WEBPACK_IMPORTED_MODULE_2__["jsx"])("div", {
       css: {
-        [mq[0]]: {
+        [_util__WEBPACK_IMPORTED_MODULE_3__["mq"][0]]: {
           display: 'none'
         },
-        [mq[2]]: {
+        [_util__WEBPACK_IMPORTED_MODULE_3__["mq"][2]]: {
           display: 'grid'
         },
         gridTemplateColumns: 'repeat(100px)',
@@ -75220,7 +75245,7 @@ let iceServers = [{
 /*!***************************!*\
   !*** ./src/util/index.js ***!
   \***************************/
-/*! exports provided: getDoc, getThumb, makeConsumeDataChPC, makeConsumePC, makeProduceDataChPC, makeProducePC, makeWebSocket, makeFakeStream, string2TypedArray, tArray2String, Bowl */
+/*! exports provided: getDoc, getThumb, makeConsumeDataChPC, makeConsumePC, makeProduceDataChPC, makeProducePC, makeWebSocket, makeFakeStream, string2TypedArray, tArray2String, Bowl, mq */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -75257,6 +75282,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony import */ var _Bowl__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./Bowl */ "./src/util/Bowl.js");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "Bowl", function() { return _Bowl__WEBPACK_IMPORTED_MODULE_10__["default"]; });
+
+/* harmony import */ var _mediaQuery__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./mediaQuery */ "./src/util/mediaQuery.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "mq", function() { return _mediaQuery__WEBPACK_IMPORTED_MODULE_11__["mq"]; });
+
 
 
 
@@ -75545,6 +75574,21 @@ function makeWebSocket(auth, {
   ws.onmessage = onMessage;
   return ws;
 }
+
+/***/ }),
+
+/***/ "./src/util/mediaQuery.js":
+/*!********************************!*\
+  !*** ./src/util/mediaQuery.js ***!
+  \********************************/
+/*! exports provided: mq */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mq", function() { return mq; });
+let mq = [360, 576, 800].map(bp => "@media (min-width: ".concat(bp, "px)"));
+
 
 /***/ }),
 
