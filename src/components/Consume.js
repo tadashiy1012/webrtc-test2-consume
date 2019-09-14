@@ -2,7 +2,7 @@
 import {jsx, css} from '@emotion/core';
 import {inject, observer} from 'mobx-react';
 import React, {Fragment} from 'react';
-import {makeConsumeDataChPC, makeConsumePC, tArray2String} from '../util';
+import {makeConsumeDataChPC, makeConsumePC, tArray2String, mq} from '../util';
 import ChatView from './ChatView';
 import SelfVideoView from './SelfVideoView';
 import RemoteVideoView from './RemoteVideoView';
@@ -101,9 +101,6 @@ export default class Consume extends React.Component {
         this.props.consume.regenerateId();
     }
     render() {
-        const mq = [360, 576, 800].map(
-            bp => `@media (min-width: ${bp}px)`
-        );
         return <Fragment>
             <div className='row no-gutters'>
                 <div className='col-md-9'>

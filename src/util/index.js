@@ -9,6 +9,7 @@ import makeFakeStream from './makeFakeStream';
 import string2TypedArray from './string2TypedArray';
 import tArray2String from './tArray2String';
 import Bowl from './Bowl';
+import {mq} from './mediaQuery';
 
 export {
     getDoc,
@@ -21,5 +22,6 @@ export {
     makeFakeStream,
     string2TypedArray,
     tArray2String,
-    Bowl
+    Bowl,
+    mq
 }

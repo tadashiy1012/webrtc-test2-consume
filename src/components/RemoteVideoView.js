@@ -2,7 +2,7 @@
 import React, {Fragment} from 'react';
 import {observer, inject} from 'mobx-react';
 import {jsx, css} from '@emotion/core';
-import {} from '../util';
+import {mq} from '../util';
 
 @inject('consume')
 @observer
@@ -26,9 +26,6 @@ export default class RemoteVideoView extends React.Component {
         this.props.consume.toggleRec();
     }
     render() {
-        const mq = [360, 576, 800].map(
-            bp => `@media (min-width: ${bp}px)`
-        );
         const icon = this.props.consume.rec ? '🔴':'⚫';
         return <Fragment>
             <video ref={(video) => {

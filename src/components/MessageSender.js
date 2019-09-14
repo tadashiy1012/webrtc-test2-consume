@@ -2,6 +2,7 @@
 import {jsx, css} from '@emotion/core';
 import React, {Fragment} from 'react';
 import {observer, inject} from 'mobx-react';
+import {mq} from '../util'
 
 @inject('consume')
 @observer
@@ -15,9 +16,6 @@ export default class MessageSender extends React.Component {
         this.props.consume.dcPc.send(this.textRef.current.value);
     }
     render() {
-        const mq = [360, 576, 800].map(
-            bp => `@media (min-width: ${bp}px)`
-        );
         return <Fragment>
             <div className='row' css={{[mq[0]]:{display:'none'}, [mq[2]]:{display:'block'}}}>
                 <div className='col-12'>

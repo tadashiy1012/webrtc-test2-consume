@@ -2,7 +2,7 @@
 import React, {Fragment} from 'react';
 import {observer, inject} from 'mobx-react';
 import {jsx, css} from '@emotion/core';
-import {makeFakeStream} from '../util';
+import {makeFakeStream, mq} from '../util';
 
 @inject('consume', 'root')
 @observer
@@ -33,9 +33,6 @@ export default class SelfVideoView extends React.Component {
         })();
     }
     render() {
-        const mq = [360, 576, 800].map(
-            bp => `@media (min-width: ${bp}px)`
-        );
         return <Fragment>
             <video ref={this.selfVideoRef} 
                 autoPlay muted webkit-playsinline='true' playsInline 
