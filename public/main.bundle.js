@@ -75124,6 +75124,18 @@ class MyPeerConnection {
     this.conn.onnegotiationneeded = onNegotiationneeded;
     this.conn.onicecandidate = onIcecandidate;
     this.conn.ontrack = onTrack;
+
+    this.conn.onicegatheringstatechange = ev => {
+      console.log(ev);
+      console.log(ev.target.iceGatheringState);
+      const label = 'time1';
+
+      if (ev.target.iceGatheringState === 'gathering') {
+        console.time(label);
+      } else if (ev.target.iceGatheringState === 'complete') {
+        console.timeEnd(label);
+      }
+    };
   }
 
   async createOffer() {
@@ -75235,7 +75247,7 @@ function getThumb(doc) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "iceServers", function() { return iceServers; });
 let iceServers = [{
-  "urls": "stun:stun.l.google.com:19302"
+  "urls": "stun:stun.services.mozilla.com:3478"
 }];
 
 
